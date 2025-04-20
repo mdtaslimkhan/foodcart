@@ -1,102 +1,122 @@
-# 🛠️ FieldWork – React Native Field Management App
+# 🍕 React Native Foodie - E-commerce Food Delivery App
 
-**FieldWork** is a React Native mobile application tailored for field teams to efficiently manage tasks, assign responsibilities, and monitor progress. Whether you're overseeing a sales team, maintenance crew, or any field-based workforce, FieldWork streamlines task delegation and achievement tracking.
+**React Native Foodie** is a mobile-first e-commerce app built with React Native that allows users to browse, order, and track food deliveries from local restaurants. Designed for seamless performance on both Android and iOS.
 
 ---
-
-![Images!](assets/screen/fm.png)
-
 
 ## 📱 Features
 
-- **Task Assignment**: Assign specific tasks to team members with due dates and priorities.
-- **Real-Time Updates**: Receive instant notifications on task status changes.
-- **Progress Tracking**: Monitor task completion and overall team performance.
-- **User Authentication**: Secure login and user management.
-- **Offline Mode**: Access and update tasks without an internet connection; changes sync once online.
-- **Analytics Dashboard**: Visualize team achievements and task completion rates.
+- 🛍️ Browse restaurants and food categories
+- 🔍 Search and filter food items
+- 🧺 Add to cart and place orders
+- 💳 Integrate with payment gateways (e.g., Stripe)
+- 📦 View order history and live order tracking
+- 🔐 User authentication (Sign In/Sign Up)
+- 🔔 Push notifications for order updates
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Tech Stack
+
+- **Frontend:** React Native (Expo or CLI)
+- **Navigation:** React Navigation
+- **State Management:** Redux
+- **Backend:** Node.js, Express
+- **Database:** Firebase Firestore
+- **Push Notifications:** Expo Notifications / Firebase Cloud Messaging
+
+---
+
+## 🧑‍💻 Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Expo CLI (for development)
-- Android/iOS emulator or physical device for testing
+- Node.js & npm
+- Expo CLI (`npm install -g expo-cli`)
+- Android Studio or Xcode (for emulator/simulator)
+- Firebase project (optional)
+- Stripe account (optional)
 
-### Steps
+### Installation
 
-1. **Clone the repository**:
+1. **Clone the repo**
    ```bash
-   git clone https://github.com/mdtaslimkhan/fieldmanagement.git
-   cd fieldwork
+   git clone https://github.com/mdtaslimkhan/ecommerce.git
+   cd foodie-app
    ```
 
-2. **Install dependencies**:
+2. **Install dependencies**
    ```bash
    npm install
-   # or
-   yarn install
    ```
 
-3. **Start the development server**:
+3. **Configure environment**
+   - Create a `.env` file in the root
+   - Add Firebase, Stripe, or API base URLs
+
+4. **Run the app**
    ```bash
-   npx expo start
+   npm start
+   # or
+   expo start
    ```
 
-4. **Run on Android/iOS**:
-   - For Android:
-     ```bash
-     npx react-native run-android
-     ```
-   - For iOS (macOS only):
-     ```bash
-     npx react-native run-ios
-     ```
+---
+
+## 📁 Folder Structure
+
+```
+foodie-app/
+├── assets/               # Images, icons, etc.
+├── components/           # Reusable UI components
+├── screens/              # Screen components (Home, Cart, etc.)
+├── redux/ or context/    # State management
+├── App.js
+└── .env
+```
+
+
+## 📸 Screenshots
+
+> Add screenshots or GIFs here to show off your UI.
 
 ---
 
-## 🎯 Usage
+## 🚀 Roadmap
 
-- **Assign Tasks**: Navigate to the 'Tasks' section, select a team member, and assign a new task.
-- **Track Progress**: View the 'Dashboard' to see real-time updates on task statuses and achievements.
-- **Offline Access**: Use the app in areas with limited connectivity; data will sync once the device is online.
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React Native, Expo
-- **State Management**: Redux
-- **Backend**: Firebase (Authentication, Firestore)
-- **Offline Storage**: AsyncStorage
-- **Notifications**: Firebase Cloud Messaging
-- **UI Components**: NativeBase, React Navigation
+- [x] Core functionality (Browse, Cart, Checkout)
+- [x] Firebase Authentication
+- [ ] Real-time order tracking with sockets
+- [ ] Restaurant/Admin dashboard (web)
+- [ ] Ratings & Reviews
 
 ---
-
 
 ## 🤝 Contributing
 
-We welcome contributions to enhance FieldWork. To contribute:
+Pull requests are welcome! Follow these steps:
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeature`).
-3. Make your changes.
-4. Commit your changes (`git commit -am 'Add YourFeature'`).
-5. Push to the branch (`git push origin feature/YourFeature`).
-6. Open a Pull Request.
-
-Please ensure your code adheres to the project's coding standards and includes appropriate tests.
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/awesome-feature`)
+3. Commit your changes (`git commit -m 'Add awesome feature'`)
+4. Push to the branch (`git push origin feature/awesome-feature`)
+5. Open a pull request
 
 ---
 
 ## 📄 License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+This project is licensed under the MIT License.
+
+---
+
+## 🙌 Acknowledgements
+
+- [React Native](https://reactnative.dev/)
+- [Expo](https://expo.dev/)
+- [Firebase](https://firebase.google.com/)
+- [Stripe](https://stripe.com/)
+- [React Navigation](https://reactnavigation.org/)
 
 ---
 
@@ -106,7 +126,7 @@ For inquiries or feedback, please contact:
 
 - Email: asalam773@gmail.com
 - GitHub: (https://github.com/mdtaslimkhan)
-- Project Link: (https://github.com/mdtaslimkhan/fieldmanagement)
+- Project Link: (https://github.com/mdtaslimkhan/ecommerce)
 
 ---
 
