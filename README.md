@@ -1,6 +1,6 @@
-# 🍕 React Native Foodie - E-commerce Food Delivery App
+# 🍕 React Native FoodCart - E-commerce Food Delivery App
 
-**React Native Foodie** is a mobile-first e-commerce app built with React Native that allows users to browse, order, and track food deliveries from local restaurants. Designed for seamless performance on both Android and iOS.
+**React Native FoodCart** is a mobile-first e-commerce app built with React Native that allows users to browse, order, and track food deliveries from local restaurants. Designed for seamless performance on both Android and iOS.
 
 ---
 
@@ -41,8 +41,8 @@
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/mdtaslimkhan/ecommerce.git
-   cd foodie-app
+   git clone https://github.com/mdtaslimkhan/foodcart.git
+   cd FoodCart-app
    ```
 
 2. **Install dependencies**
@@ -66,7 +66,7 @@
 ## 📁 Folder Structure
 
 ```
-foodie-app/
+FoodCart-app/
 ├── assets/               # Images, icons, etc.
 ├── components/           # Reusable UI components
 ├── screens/              # Screen components (Home, Cart, etc.)
@@ -126,7 +126,7 @@ For inquiries or feedback, please contact:
 
 - Email: asalam773@gmail.com
 - GitHub: (https://github.com/mdtaslimkhan)
-- Project Link: (https://github.com/mdtaslimkhan/ecommerce)
+- Project Link: (https://github.com/mdtaslimkhan/foodcart)
 
 ---
 
