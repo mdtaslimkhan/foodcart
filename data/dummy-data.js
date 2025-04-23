@@ -2,10 +2,10 @@ import Category from '../models/category';
 import Meal from '../models/meal';
 
 export const CATEGORIES = [
-  new Category('c1', 'Italian', '#f5428d'),
-  new Category('c2', 'Quick & Easy', '#f54242'),
-  new Category('c3', 'Hamburgers', '#f5a442'),
-  new Category('c4', 'German', '#f5d142'),
+  new Category('c1', 'Italian', '#a4f542'),
+  new Category('c2', 'Quick & Easy', '#1e5f7a'),
+  new Category('c3', 'Hamburgers', '#f5428a'),
+  new Category('c4', 'German', '#f5bf42'),
   new Category('c5', 'Light & Lovely', '#368dff'),
   new Category('c6', 'Exotic', '#41d95d'),
   new Category('c7', 'Breakfast', '#9eecff'),
@@ -21,7 +21,7 @@ export const MEALS = [
     'Spaghetti with Tomato Sauce',
     'affordable',
     'simple',
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg/800px-Spaghetti_Bolognese_mit_Parmesan_oder_Grana_Padano.jpg',
+    'https://media.istockphoto.com/id/1247032438/photo/beef-patty-burger-with-pickles-and-cheese.jpg?s=1024x1024&w=is&k=20&c=nmuZBY-UaqZi6GQv09W_BC9IcJg-WOXiRT_g5KK0ivI=',
     20,
     [
       '4 Tomatoes',

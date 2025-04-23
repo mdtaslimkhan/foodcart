@@ -12,7 +12,7 @@ const Dashboard = ({navigation, route}) => {
 
     useEffect(() => {
       navigation.setOptions({
-        title: "All Categories"
+        title: "Meal Categories"
       })
     },[])
   

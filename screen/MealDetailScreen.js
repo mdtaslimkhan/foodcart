@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { ScrollView, View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -6,6 +6,9 @@ import DefaultText from '../components/DefaultText';
 import { MEALS } from '../data/dummy-data';
 import { AntDesign } from '@expo/vector-icons';
 import { addItem, removeItem } from '../redux/slices/fabourite';
+import { addToCart, removeFromCart } from "../redux/slices/cartlist";
+import {useIsFocused } from '@react-navigation/native';
+useIsFocused
 
 const ListItem = props => {
   return (
@@ -16,13 +19,16 @@ const ListItem = props => {
 };
 
 const MealDetailScreen = props => {
+  const [cartCount, setCartCount] = useState(0);
+
  // const availableMeals = useSelector(state => state.meals.meals);
  const mealId = props.route.params.mealId;
  const dispatch = useDispatch();
+ const useFocused = useIsFocused();
   const currentMealIsFavorite = useSelector(state => state.FabouriteListReducer.ids.indexOf(mealId) + 1);
+  const currentMealInCart = useSelector(state => state.CartListReducer.ids.indexOf(mealId) + 1);
 
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
-
 
   const toggleFavoriteHandler = useCallback(() => {
     dispatch(toggleFavorite(mealId));
@@ -34,24 +40,68 @@ const MealDetailScreen = props => {
   }, [toggleFavoriteHandler]);
 
   const onfavPress = (val) =>{
-    console.log("hello pressed");
-    console.log("hello pressed " + val);
-
     if(val > 0){
       dispatch(removeItem({id: mealId}));
-      console.log("hello removed " + val);
     }else{
       dispatch(addItem({id: mealId}));
-      console.log("hello added " + val);
+    }
+  }
+
+  const onCartPress = (val) =>{
+    console.log("cart press " + val);
+    if(val > 0){
+      dispatch(removeFromCart({id: mealId}));
+    }else{
+      dispatch(addToCart({id: mealId}));
     }
   }
 
   useEffect(() => {
     props.navigation.setOptions({
-      headerRight: () => <TouchableOpacity onPress={() => onfavPress(currentMealIsFavorite)} >
-        <AntDesign name='heart' size={22} color={ currentMealIsFavorite > 0 ? "red" : "grey"} /></TouchableOpacity> 
+      headerRight: () => {
+      return(
+      <View style={styles.headerIcons}>
+      <TouchableOpacity onPress={() => onfavPress(currentMealIsFavorite)} >
+        <AntDesign name='heart' size={22} color={ currentMealIsFavorite > 0 ? "red" : "grey"} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => onCartPress(currentMealInCart)} >
+          <View style={{flex:1, alignItems: 'center',  justifyContent:'center'}}>
+            <AntDesign name='shoppingcart' size={24} 
+              color={ currentMealInCart > 0 ? "green" : "grey"}
+              containerStyle={{marginHorizontal: 15, position: 'relative',}}
+            />
+         {currentMealInCart > 0 ? (
+                  <View
+                    style={{
+                      position: 'absolute',
+                      backgroundColor: 'red',
+                      width: 16,
+                      height: 16,
+                      borderRadius: 15 / 2,
+                      right: -10,
+                      top: -10,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Text
+                      style={{
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: "#FFFFFF",
+                        fontSize: 8,
+                      }}>
+                      {currentMealInCart}
+                    </Text>
+                  </View>
+                ) : null}
+                </View>
+      </TouchableOpacity>
+      
+      </View>
+      )}
     });
-  }, [currentMealIsFavorite]);
+    console.log("asldkj ");
+  }, [useFocused, currentMealInCart, currentMealIsFavorite]);
 
   return (
     <ScrollView>
@@ -99,7 +149,13 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     padding: 10
-  }
+  },
+  headerIcons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 60
+  },
+
 });
 
 export default MealDetailScreen;

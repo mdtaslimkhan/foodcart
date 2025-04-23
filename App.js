@@ -13,6 +13,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import CategoryMealScreen from './screen/CategoryMealsScreen';
 import MealDetailScreen from './screen/MealDetailScreen';
 import Favorite from './screen/favorite';
+import Cart from './screen/cart';
+
 
 
 
@@ -89,11 +91,22 @@ export default function App() {
           name='Favorite' 
           component={Favorite}
           options={{
-          drawerLabel: "Favourite",
-          drawerIcon: ({color, size}) => (
-            <AntDesign name='heart' size={size} color={color} />
-          ),
-        }}
+            drawerLabel: "Favourite",
+            drawerIcon: ({color, size}) => (
+              <AntDesign name='heart' size={size} color={color} />
+            ),
+          }}
+          />
+
+          <Drawer.Screen 
+          name='Cart' 
+          component={Cart}
+          options={{
+            drawerLabel: "Sopping Cart",
+            drawerIcon: ({color, size}) => (
+              <AntDesign name='shoppingcart' size={size} color={color} />
+            ),
+          }}
           />
         
       </Drawer.Navigator>
