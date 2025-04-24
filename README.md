@@ -1,4 +1,4 @@
-# 🍕 React Native FoodCart - E-commerce Food Delivery App
+# 🍕 React Native FoodCart - E-commerce Food Order App
 
 **React Native FoodCart** is a mobile-first e-commerce app built with React Native that allows users to browse, order, and track food deliveries from local restaurants. Designed for seamless performance on both Android and iOS.
 
