@@ -52,7 +52,7 @@ const navToCart = () => {
 
 return(
   <TouchableOpacity onPress={() => navToCart()} >
-    <CartCounterWithIcon count={props.count} />
+    <CartCounterWithIcon count={props.count} name={props.name} />
   </TouchableOpacity>
 );
 

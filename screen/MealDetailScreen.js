@@ -69,7 +69,7 @@ const MealDetailScreen = props => {
       <TouchableOpacity onPress={() => onfavPress(currentMealIsFavorite)} >
         <AntDesign name='heart' size={22} color={ currentMealIsFavorite > 0 ? "red" : "grey"} />
       </TouchableOpacity>
-        <Cartcounter count={allMealInCart} navigation={props.navigation} />      
+        <Cartcounter count={allMealInCart} name={'shoppingcart'} navigation={props.navigation} />      
       </View>
       )}
     });

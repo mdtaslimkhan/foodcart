@@ -4,6 +4,10 @@
 
 ---
 
+## 🚀 Screens
+
+![Images!](assets/foodcart.png)
+
 ## 📱 Features
 
 - 🛍️ Browse restaurants and food categories

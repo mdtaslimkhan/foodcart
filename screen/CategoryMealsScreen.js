@@ -16,7 +16,7 @@ const CategoryMealScreen = ({navigation, route}) => {
   useEffect(() => {
     navigation.setOptions({
       title: selectedCategory.title,
-      headerRight: () => <Cartcounter count={allCartItems} navigation={navigation} />
+      headerRight: () => <Cartcounter count={allCartItems} name={"shoppingcart"} navigation={navigation} />
     })  
   },[])
 
