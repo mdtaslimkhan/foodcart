@@ -11,6 +11,7 @@ const CartListSlice = createSlice({
             console.log(action.payload);
             state.ids.push(action.payload.id);
         },
+        
         removeFromCart: (state, action) => {
             console.log(action);
             state.ids.splice(state.ids.indexOf(action.payload.id));

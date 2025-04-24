@@ -8,13 +8,13 @@ import Home from './screen/home';
 import { AntDesign } from '@expo/vector-icons';
 import persistStore from 'redux-persist/es/persistStore';
 import store from './redux/store';
-import { Provider } from 'react-redux';
+import {useSelector, Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import CategoryMealScreen from './screen/CategoryMealsScreen';
 import MealDetailScreen from './screen/MealDetailScreen';
 import Favorite from './screen/favorite';
 import Cart from './screen/cart';
-
+import Cartcounter, { Cartcounternoaction } from './components/cartcounter';
 
 
 
@@ -24,9 +24,6 @@ let persistor = persistStore(store);
 export default function App() {
 
    
-
-
-
   const Stacknav = () => {
     const Stack = createNativeStackNavigator();
     const navigation = useNavigation();
@@ -67,12 +64,19 @@ export default function App() {
         <Stack.Screen name='Home' component={Home} />
         <Stack.Screen name='CategoryMealScreen' component={CategoryMealScreen} />
         <Stack.Screen name='MealDetailScreen' component={MealDetailScreen} />
+        <Stack.Screen name='Cart' component={Cart} />
 
     </Stack.Navigator>
     );
   }
   
   const DrawerNav = () => {
+    const itemincart = useSelector(state => state.CartListReducer.ids.length);
+    const favitem = useSelector(state => state.FabouriteListReducer.ids);
+
+    console.log("fablist  items");
+    console.log(favitem);
+
     const Drawer = createDrawerNavigator();
     return (
       <Drawer.Navigator screenOptions={{
@@ -93,7 +97,7 @@ export default function App() {
           options={{
             drawerLabel: "Favourite",
             drawerIcon: ({color, size}) => (
-              <AntDesign name='heart' size={size} color={color} />
+              <Cartcounternoaction count={favitem.length} name={"heart"} />
             ),
           }}
           />
@@ -104,7 +108,7 @@ export default function App() {
           options={{
             drawerLabel: "Sopping Cart",
             drawerIcon: ({color, size}) => (
-              <AntDesign name='shoppingcart' size={size} color={color} />
+              <Cartcounternoaction count={itemincart} name={"shoppingcart"} />
             ),
           }}
           />

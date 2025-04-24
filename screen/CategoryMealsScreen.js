@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet,Text, TouchableOpacity } from 'react-native';
 import { useSelector } from 'react-redux';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 import MealList from '../components/MealList';
 import DefaultText from '../components/DefaultText';
-
+import Cartcounter from '../components/cartcounter';
 
 
 const CategoryMealScreen = ({navigation, route}) => {
 
   const catId = route.params.categoryId;  
   const selectedCategory = CATEGORIES.find(cat => cat.id === catId);
+  const allCartItems = useSelector(state => state.CartListReducer.ids.length);
 
   useEffect(() => {
     navigation.setOptions({
-      title: selectedCategory.title
+      title: selectedCategory.title,
+      headerRight: () => <Cartcounter count={allCartItems} navigation={navigation} />
     })  
   },[])
 

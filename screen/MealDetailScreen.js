@@ -8,7 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { addItem, removeItem } from '../redux/slices/fabourite';
 import { addToCart, removeFromCart } from "../redux/slices/cartlist";
 import {useIsFocused } from '@react-navigation/native';
-useIsFocused
+import Cartcounter from '../components/cartcounter';
 
 const ListItem = props => {
   return (
@@ -27,6 +27,7 @@ const MealDetailScreen = props => {
  const useFocused = useIsFocused();
   const currentMealIsFavorite = useSelector(state => state.FabouriteListReducer.ids.indexOf(mealId) + 1);
   const currentMealInCart = useSelector(state => state.CartListReducer.ids.indexOf(mealId) + 1);
+  const allMealInCart = useSelector(state => state.CartListReducer.ids.length);
 
   const selectedMeal = MEALS.find(meal => meal.id === mealId);
 
@@ -56,6 +57,10 @@ const MealDetailScreen = props => {
     }
   }
 
+  const navToCart = () => {
+    props.navigation.navigate('Cart');
+  }
+
   useEffect(() => {
     props.navigation.setOptions({
       headerRight: () => {
@@ -64,44 +69,11 @@ const MealDetailScreen = props => {
       <TouchableOpacity onPress={() => onfavPress(currentMealIsFavorite)} >
         <AntDesign name='heart' size={22} color={ currentMealIsFavorite > 0 ? "red" : "grey"} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => onCartPress(currentMealInCart)} >
-          <View style={{flex:1, alignItems: 'center',  justifyContent:'center'}}>
-            <AntDesign name='shoppingcart' size={24} 
-              color={ currentMealInCart > 0 ? "green" : "grey"}
-              containerStyle={{marginHorizontal: 15, position: 'relative',}}
-            />
-         {currentMealInCart > 0 ? (
-                  <View
-                    style={{
-                      position: 'absolute',
-                      backgroundColor: 'red',
-                      width: 16,
-                      height: 16,
-                      borderRadius: 15 / 2,
-                      right: -10,
-                      top: -10,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <Text
-                      style={{
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: "#FFFFFF",
-                        fontSize: 8,
-                      }}>
-                      {currentMealInCart}
-                    </Text>
-                  </View>
-                ) : null}
-                </View>
-      </TouchableOpacity>
-      
+        <Cartcounter count={allMealInCart} navigation={props.navigation} />      
       </View>
       )}
     });
-    console.log("asldkj ");
-  }, [useFocused, currentMealInCart, currentMealIsFavorite]);
+  }, [currentMealIsFavorite, currentMealInCart]);
 
   return (
     <ScrollView>
@@ -111,6 +83,13 @@ const MealDetailScreen = props => {
         <DefaultText>{selectedMeal.complexity.toUpperCase()}</DefaultText>
         <DefaultText>{selectedMeal.affordability.toUpperCase()}</DefaultText>
       </View>
+      <TouchableOpacity style={[styles.addtocart, currentMealInCart ? styles.active : styles.inactive]} onPress={() => onCartPress(currentMealInCart)}>
+          <Text style={[styles.carttext, currentMealInCart ? styles.active : styles.inactive ]}>{ currentMealInCart ? "Remove" : "Add To Cart" } </Text>
+            <AntDesign name='shoppingcart' size={22} 
+              color={ currentMealInCart > 0 ? "red" : "green"}
+              containerStyle={{marginHorizontal: 15, position: 'relative',}}
+            />
+      </TouchableOpacity>
       <Text style={styles.title}>Ingredients</Text>
       {selectedMeal.ingredients.map(ingredient => (
         <ListItem key={ingredient}>{ingredient}</ListItem>
@@ -155,6 +134,29 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: 60
   },
+  addtocart: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: 'center',
+    alignSelf: 'center',
+    borderColor: "green",
+    borderWidth: 1,
+    padding: 8,
+    width: 200,
+    justifyContent: 'center',
+   
+  },
+  carttext: {
+    fontSize: 16,
+  },
+  active: {
+    color: 'red',
+    borderColor: "red",
+  },
+  inactive: {
+    borderColor: "green",
+    borderColor: "green",
+  }
 
 });
 

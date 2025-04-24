@@ -1,19 +1,21 @@
 
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { CATEGORIES, MEALS } from '../data/dummy-data';
 import MealList from '../components/MealList';
 import DefaultText from '../components/DefaultText';
+import { AntDesign } from '@expo/vector-icons';
 
-const Cartcounter = ({navigation, route, pressbtn}) => {
-    return(
-        <View style={{flex:1, alignItems: 'center',  justifyContent:'center'}}>
-            <AntDesign name='shoppingcart' size={24} 
-            color={ currentMealIsFavorite > 0 ? "red" : "grey"}
+
+const CartCounterWithIcon = props => {
+  console.log(props.name);
+  return(<View style={{ alignItems: 'center',  justifyContent:'center'}}>
+            <AntDesign name={props.name} size={24} 
+            color={"green"}
             containerStyle={{marginHorizontal: 15, position: 'relative',}}
             />
-         {cartCount > 0 ? (
+         {props.count > 0 ? (
                   <View
                     style={{
                       position: 'absolute',
@@ -33,10 +35,27 @@ const Cartcounter = ({navigation, route, pressbtn}) => {
                         color: "#FFFFFF",
                         fontSize: 8,
                       }}>
-                      {cartCount}
+                      {props.count}
                     </Text>
                   </View>
                 ) : null}
-                </View>
-    );
+                </View>);
 }
+
+export const Cartcounternoaction = props => <CartCounterWithIcon name={props.name} count={props.count} />
+
+const Cartcounter = props => {
+
+const navToCart = () => {
+  props.navigation.navigate('Cart');
+}
+
+return(
+  <TouchableOpacity onPress={() => navToCart()} >
+    <CartCounterWithIcon count={props.count} />
+  </TouchableOpacity>
+);
+
+}
+
+export default Cartcounter;
