@@ -10,13 +10,10 @@
 
 ## 📱 Features
 
-- 🛍️ Browse restaurants and food categories
+- 🛍️ Browse food categories
 - 🔍 Search and filter food items
 - 🧺 Add to cart and place orders
-- 💳 Integrate with payment gateways (e.g., Stripe)
 - 📦 View order history and live order tracking
-- 🔐 User authentication (Sign In/Sign Up)
-- 🔔 Push notifications for order updates
 
 ---
 
@@ -89,10 +86,7 @@ FoodCart-app/
 ## 🚀 Roadmap
 
 - [x] Core functionality (Browse, Cart, Checkout)
-- [x] Firebase Authentication
 - [ ] Real-time order tracking with sockets
-- [ ] Restaurant/Admin dashboard (web)
-- [ ] Ratings & Reviews
 
 ---
 
@@ -134,4 +128,3 @@ For inquiries or feedback, please contact:
 
 ---
 
-Feel free to customize this template further to align with your project's specific requirements and branding. 
